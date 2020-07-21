@@ -22,10 +22,6 @@ def setup_conn(port, accept_handler):
     listen_s.listen(1)
     if accept_handler:
         listen_s.setsockopt(socket.SOL_SOCKET, 20, accept_handler)
-    for i in (network.AP_IF, network.STA_IF):
-        iface = network.WLAN(i)
-        if iface.active():
-            print("WebREPL daemon started on ws://%s:%d" % (iface.ifconfig()[0], port))
     return listen_s
 
 
